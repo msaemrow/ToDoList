@@ -16,7 +16,7 @@ for(let i=0; i<toDoListArray.length; i++){
     toDoList.append(newToDo);
 }
 
-
+s
 //Event listener that adds a new li, completed button and remove button
 form.addEventListener('submit', function(e){
     e.preventDefault();
