@@ -4,11 +4,12 @@ const input = document.querySelector('#listItem');
 const toDoList = document.querySelector('#todo-list')
 
 //Local Storage Array
-const toDoListArray = JSON.parse(localStorage.getItem('toDOListArray')) || [];
+const toDoListArray = localStorage.getItem("ToDos") ? JSON.parse(localStorage.getItem("TodDos")) : [];
 
 for(let i=0; i<toDoListArray.length; i++){
     let newToDo = document.createElement('li');
     newToDo.innerText = toDoListArray[i].task;
+    console.log(newToDo.innerText);
     newToDo.isComplete = toDoListArray[i].isComplete ? true : false;
     if(newToDo.isComplete){
         newToDo.classList.add('completed');
@@ -16,7 +17,6 @@ for(let i=0; i<toDoListArray.length; i++){
     toDoList.append(newToDo);
 }
 
-s
 //Event listener that adds a new li, completed button and remove button
 form.addEventListener('submit', function(e){
     e.preventDefault();
@@ -50,14 +50,12 @@ toDoList.addEventListener('click', function(e){
         e.target.parentElement.remove();
     }
     else if(!e.target.isComplete){
-        e.target.parentElement.classList.add('completed');
-        e.target.parentElement.classList.remove('incomplete');
+        e.target.parentElement.classList.toggle('completed');
         e.target.isComplete = true;
-        console.log("Completd: " + e.target.isComplete);
+        console.log(e.target.innerText)
     }
     else if(e.target.isComplete){
-        e.target.parentElement.classList.add('incomplete');
-        e.target.parentElement.classList.remove('completed');
+        e.target.parentElement.classList.toggle('completed');
         e.target.isComplete = false;
     }
 }
