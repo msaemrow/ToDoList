@@ -27,9 +27,9 @@ form.addEventListener('submit', function(e){
     const newRemoveBtn = document.createElement('button');
 
     newItem.innerText = input.value;
-    newItem.classList.add('incomplete');
+    newItem.isComplete = false;
     //save the new item in the toDoListArray
-    toDoListArray.push({task: newItem.innerText, isComplete: newItem.getAttribute('class')});
+    toDoListArray.push({task: newItem.innerText, isComplete: newItem.isComplete});
     localStorage.setItem("ToDOs", JSON.stringify(toDoListArray));
 
     newCompleteBtn.innerText = 'Completed';
