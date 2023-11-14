@@ -1,20 +1,20 @@
 //Document selectors
 const form = document.querySelector('#addItem');
 const input = document.querySelector('#listItem');
-const toDoList = document.querySelector('#todo-list')
+const todoList = document.querySelector('#todo-list')
 
 //Local Storage Array
-const toDoListArray = localStorage.getItem("ToDos") ? JSON.parse(localStorage.getItem("TodDos")) : [];
+const todoListArray = localStorage.getItem("Todos") ? JSON.parse(localStorage.getItem("Todos")) : [];
 
-for(let i=0; i<toDoListArray.length; i++){
-    let newToDo = document.createElement('li');
-    newToDo.innerText = toDoListArray[i].task;
-    newToDo.isComplete = toDoListArray[i].isComplete ? true : false;
-    if(newToDo.isComplete){
-        newToDo.classList.add('completed');
+for(let i=0; i<todoListArray.length; i++){
+    let newTodo = document.createElement('li');
+    newTodo.innerText = todoListArray[i].task;
+    newTodo.isComplete = todoListArray[i].isComplete ? true : false;
+    if(newTodo.isComplete){
+        newTodo.classList.add('completed');
     }
 
-    toDoList.append(newToDo);
+    todoList.append(newTodo);
 }
 
 //Event listener that adds a new li, completed button and remove button
@@ -27,8 +27,8 @@ form.addEventListener('submit', function(e){
     newItem.innerText = input.value;
     newItem.isComplete = false;
     //save the new item in the toDoListArray
-    toDoListArray.push({task: newItem.innerText, isComplete: newItem.isComplete});
-    localStorage.setItem("ToDOs", JSON.stringify(toDoListArray));
+    todoListArray.push({task: newItem.innerText, isComplete: newItem.isComplete});
+    localStorage.setItem("Todos", JSON.stringify(todoListArray));
 
     newCompleteBtn.innerText = 'Completed';
     newRemoveBtn.innerText = 'Remove';
@@ -40,12 +40,12 @@ form.addEventListener('submit', function(e){
     newItem.append(newCompleteBtn);
     newItem.append(newRemoveBtn);
     input.value = '';
-    toDoList.appendChild(newItem);
+    todoList.appendChild(newItem);
 })
 
 //Event listener that adds completed class to item if completed button is clicked
 //or removes item if Remove button is clicked
-toDoList.addEventListener('click', function(e){
+todoList.addEventListener('click', function(e){
     if(e.target.id==='removeItem'){
         e.target.parentElement.remove();
     }
