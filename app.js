@@ -47,16 +47,20 @@ form.addEventListener('submit', function(e){
 //or removes item if Remove button is clicked
 todoList.addEventListener('click', function(e){
     if(e.target.id==='removeItem'){
-        e.target.parentElement.remove();
-    }
-    else if(!e.target.isComplete){
-        e.target.parentElement.classList.toggle('completed');
-        e.target.isComplete = true;
-        console.log(e.target.isComplete)
-    }
-    else if(e.target.isComplete){
-        e.target.parentElement.classList.toggle('completed');
-        e.target.isComplete = false;
+            e.target.parentElement.remove();
+        }
+    else if(e.target.id==='completedItem'){
+        if(!e.target.isComplete){
+            e.target.parentElement.classList.toggle('completed');
+            e.target.isComplete = true;
+            console.log(e.target.isComplete)
+            }
+        else{
+            e.target.parentElement.classList.toggle('completed');
+            e.target.isComplete = false;
+            }
+    }else{
+        return;
     }
 }
 );
