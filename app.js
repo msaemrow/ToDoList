@@ -8,6 +8,7 @@ const todoList = document.querySelector('#todo-list')
 const todoListArray = localStorage.getItem("Todos") ? JSON.parse(localStorage.getItem("Todos")) : [];
 
 function refreshLocalStorage(){
+    todoList.innerHTML = '';
     for(let i=0; i<todoListArray.length; i++){
         let newTodo = document.createElement('li');
         const newCompleteBtn = document.createElement('button');
@@ -21,7 +22,8 @@ function refreshLocalStorage(){
 
         newTodo.innerText = todoListArray[i].task;
         newTodo.title = newTodo.innerText;
-        newTodo.isComplete = todoListArray[i];
+        newTodo.isComplete = todoListArray[i].isComplete ? true : false;
+        console.log(todoListArray[i].isComplete);
         if(newTodo.isComplete){
             newTodo.classList.add('completed');
         }
@@ -29,6 +31,8 @@ function refreshLocalStorage(){
         newTodo.append(newRemoveBtn);
         todoList.append(newTodo);
 }
+    localStorage.clear();
+    localStorage.setItem("Todos", JSON.stringify(todoListArray));
 }
 
 
@@ -64,17 +68,19 @@ form.addEventListener('submit', function(e){
 todoList.addEventListener('click', function(e){
     if(e.target.id==='removeItem'){
         removeTask(e);
+        refreshLocalStorage();
         e.target.parentElement.remove();
-  
         }
     else if(e.target.id==='completedItem'){
         if(!e.target.parentElement.isComplete){
             e.target.parentElement.classList.toggle('completed');
             updatedCompletedStatus(e);
+            refreshLocalStorage();
             }
         else{
             e.target.parentElement.classList.toggle('completed');
             updatedCompletedStatus(e);
+            refreshLocalStorage();
             }
     }else{
         return;
