@@ -9,11 +9,11 @@ const toDoListArray = localStorage.getItem("ToDos") ? JSON.parse(localStorage.ge
 for(let i=0; i<toDoListArray.length; i++){
     let newToDo = document.createElement('li');
     newToDo.innerText = toDoListArray[i].task;
-    console.log(newToDo.innerText);
     newToDo.isComplete = toDoListArray[i].isComplete ? true : false;
     if(newToDo.isComplete){
         newToDo.classList.add('completed');
     }
+
     toDoList.append(newToDo);
 }
 
@@ -52,7 +52,7 @@ toDoList.addEventListener('click', function(e){
     else if(!e.target.isComplete){
         e.target.parentElement.classList.toggle('completed');
         e.target.isComplete = true;
-        console.log(e.target.innerText)
+        console.log(e.target.isComplete)
     }
     else if(e.target.isComplete){
         e.target.parentElement.classList.toggle('completed');
