@@ -8,7 +8,6 @@ const todoList = document.querySelector('#todo-list')
 const todoListArray = localStorage.getItem("Todos") ? JSON.parse(localStorage.getItem("Todos")) : [];
 
 function refreshLocalStorage(){
-    localStorage.setItem("Todos", JSON.stringify(todoListArray));
     for(let i=0; i<todoListArray.length; i++){
         let newTodo = document.createElement('li');
         const newCompleteBtn = document.createElement('button');
@@ -22,7 +21,7 @@ function refreshLocalStorage(){
 
         newTodo.innerText = todoListArray[i].task;
         newTodo.title = newTodo.innerText;
-        newTodo.isComplete = todoListArray[i].isComplete ? true : false;
+        newTodo.isComplete = todoListArray[i];
         if(newTodo.isComplete){
             newTodo.classList.add('completed');
         }
