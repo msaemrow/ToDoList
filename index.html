@@ -7,18 +7,26 @@
     <link rel="stylesheet" href="app.css">
 </head>
 <body>
+    <div id="upper-text">
     <h1>My ToDo List</h1>
     <p>Add an item below to create your own ToDo list.</p>
     <p>Once you complete your item, check <b>Completed</b> to gray it out.</p>
     <p>You can also toggle the completed off if you realize you didn't actually complete the item</p>
     <p>After you have copmlete the item, you may also remove the item from your list by clicking <b>Remove</b>.</p>
+    </div>
     <form id = "addItem">
-        <input type="text" name="listItem" id="listItem" placeholder="Enter ToDo List Item Here">
+        <input type="text" name="listItem" id="listItem" placeholder="Enter ToDo List Item Here" required>
         <button id ="add-item-btn" class="button">Add Item to ToDo List</button>
     </form>
-    <ul id="todo-list">
-    
-    </ul>
+    <div id="paper">
+        <h2 id="title">My ToDo List</h2>
+        <div id="pattern">
+            <!-- <div id="content" -->
+                <ul id="todo-list">
+                </ul>
+            </div>
+        <!-- </div> -->
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
